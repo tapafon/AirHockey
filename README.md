@@ -1,6 +1,6 @@
 # AirHockey
 
-![In-game screenshot](screenshot.png)
+![In-game screenshot](Screenshot.png)
 
 VRC world prefab by me and [F4celess](https://github.com/F4celess). Still WIP, but it's playable, unlike other AirHockey prefabs and worlds.
 
