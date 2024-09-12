@@ -21,6 +21,7 @@ public class GameManager : UdonSharpBehaviour
     public GameObject score2;
     public GameObject winner;
     public GameObject puck;
+    public GameObject soundPlayer;
     public int maxScore = 7;
     [UdonSynced] private int _p1Score;
     [UdonSynced] private int _p2Score;
@@ -38,6 +39,7 @@ public class GameManager : UdonSharpBehaviour
     private TextMeshPro _tmpScore;
     private TextMeshPro _tmpScore2;
     private TextMeshPro _tmpWinner;
+    private SoundPlayer _soundPlayer;
     private Vector3 _zero = new Vector3(0, 0, 0);
     void Start()
     {
@@ -51,6 +53,7 @@ public class GameManager : UdonSharpBehaviour
         _tmpScore = score.GetComponent<TextMeshPro>();
         _tmpScore2 = score2.GetComponent<TextMeshPro>();
         _tmpWinner = winner.GetComponent<TextMeshPro>();
+        _soundPlayer = soundPlayer.GetComponent<SoundPlayer>();
         //SendCustomNetworkEvent(NetworkEventTarget.All, "gameInit");
     }
     
@@ -103,6 +106,7 @@ public class GameManager : UdonSharpBehaviour
     
     public void gameInit()
     {
+        _soundPlayer.OnInsertingCoin();
         _init = true;
         _p1Score = 0;
         _p2Score = 0;
@@ -149,6 +153,7 @@ public class GameManager : UdonSharpBehaviour
 
     public void P1Scored()
     {
+        _soundPlayer.OnScoring();
         _p2Score++;
         _rbPuck.velocity = _zero;
         _tfPuck.localPosition = new Vector3(-1.5f, 1.71f, 0);
@@ -156,6 +161,7 @@ public class GameManager : UdonSharpBehaviour
 
     public void P2Scored()
     {
+        _soundPlayer.OnScoring();
         _p1Score++;
         _rbPuck.velocity = _zero;
         _tfPuck.localPosition = new Vector3(1.5f, 1.71f, 0);

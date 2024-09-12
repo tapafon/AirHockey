@@ -17,13 +17,11 @@ public class PlayerController : UdonSharpBehaviour
     Vector3 NEWposition;
     Vector3 direction;
     Rigidbody rigidbody3d;
-    VRCPlayerApi player;
     VRCPickup vrcPickup;
     void Start()
     {
         rigidbody3d = playerPaddle.GetComponent<Rigidbody>();
-        player = Networking.LocalPlayer;
-        vrcPickup = playerPaddle.GetComponent<VRCPickup>();
+        vrcPickup = this.GetComponent<VRCPickup>();
     }
 
     void Update()
@@ -37,5 +35,10 @@ public class PlayerController : UdonSharpBehaviour
         direction.y = 0f;
         direction.Normalize();
         rigidbody3d.AddForceAtPosition(direction*speed, NEWposition, ForceMode.Impulse);
+    }
+
+    public bool IsHolding()
+    {
+        return vrcPickup.IsHeld;
     }
 }
