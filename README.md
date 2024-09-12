@@ -6,7 +6,7 @@ VRC world prefab by me and [F4celess](https://github.com/F4celess). Still WIP, b
 
 ## Installation
 
-Just drag *.unitypackage into your world project, than drag prefab into your scene. Same for updating.
+Just drag *.unitypackage into your world project, than drag prefab into your scene. For updating, you also drag *.unitypackage into your world project, than rightclick on AirHockey on your scene -> Prefab -> Replace and select updated prefab.
 
 In GameManager script, you can change max amount of points before game over. Default is 7.
 
