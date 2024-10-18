@@ -17,7 +17,7 @@ public class ColliderManager : UdonSharpBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == puck.name)
+        if (other.gameObject.name == puck.name && Networking.LocalPlayer.isMaster)
         {
             _gameManager.OnScored(player);
         }
